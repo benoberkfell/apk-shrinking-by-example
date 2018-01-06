@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">BigFluffyApp</string>
+    <string name="a_dapper_cat">A Dapper Cat</string>
+    <string name="a_cat_in_a_box">A cat in a box</string>
+    <string name="tap_for_a_cat_picture">Tap for a cat picture</string>
+    <string name="tap_for_another">Tap for another</string>
+</resources>
