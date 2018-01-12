@@ -1,6 +1,10 @@
 # apk-shrinking-by-example
 Demo app for APK Shrinking By Example, my Windy City DevFest talk
 
+## The Presentation
+
+[Check out the slide deck](https://github.com/benoberkfell/apk-shrinking-by-example/blob/master/ShrinkingYourAPK.pdf) as delivered at Windy City DevFest 2018
+
 ## What's inside
 
 * A cat picture app with free and paid flavors, one flavor gets only one cat picture while the other gets two.
