@@ -37,6 +37,47 @@ android {
     lintOptions {
         disable 'GoogleAppIndexingWarning','AllowBackup'
     }
+
+    splits {
+
+        // Configures multiple APKs based on screen density.
+        density {
+
+            // Configures multiple APKs based on screen density.
+            enable true
+
+            // Specifies a list of screen densities Gradle should not create multiple APKs for.
+            exclude "ldpi"
+
+            // Specifies a list of compatible screen size settings for the manifest.
+            compatibleScreens 'small', 'normal', 'large', 'xlarge'
+        }
+
+    }
+}
+
+ext.densityCodes = ['mdpi':1, 'hdpi':2, 'xhdpi':3, 'xxhdpi':4, 'xxxhdpi': 5]
+
+import com.android.build.OutputFile
+
+android.applicationVariants.all { variant ->
+
+    // Assigns a different version code for each output APK
+    // other than the universal APK.
+    variant.outputs.each { output ->
+
+        def baseDensityVersionCode =
+                project.ext.densityCodes.get(output.getFilter(OutputFile.DENSITY))
+
+        // for a universal APK this value will end up null, which is good, because
+        // we want the universal to be the lowest version code -- this way the
+        // play store treats it as a fallback
+        if (baseDensityVersionCode != null) {
+
+            //Assign the new versionCode
+            output.versionCodeOverride = (baseDensityVersionCode * 10000) + variant.versionCode
+        }
+    }
 }
 
 dependencies {
